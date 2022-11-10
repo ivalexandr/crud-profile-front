@@ -86,6 +86,7 @@ export default defineComponent({
             });
             if (!this.registerForm) {
               this.$q.localStorage.set('token', res.data.access_token);
+              this.$q.localStorage.set('user', data);
               this.$router.push('/profile');
             }
           }

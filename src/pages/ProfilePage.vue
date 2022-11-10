@@ -27,6 +27,7 @@ export default defineComponent({
   methods: {
     logoutHandler() {
       this.$q.localStorage.remove('token');
+      this.$q.localStorage.remove('user');
       this.$router.push('/');
     },
   },
