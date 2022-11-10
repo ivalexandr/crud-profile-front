@@ -25,7 +25,7 @@
         <q-icon name="password" />
       </template>
     </q-input>
-    <q-btn type="submit" color="purple">
+    <q-btn outline rounded type="submit" color="purple">
       {{ buttonText }}
     </q-btn>
   </q-form>
