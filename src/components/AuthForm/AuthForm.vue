@@ -41,13 +41,15 @@
 import { defineComponent } from 'vue';
 import { TBody } from './types';
 import { AxiosError } from 'axios';
-import { Notify, LocalStorage } from 'quasar';
+import { useQuasar } from 'quasar';
 import { api } from 'src/boot/axios';
 import { ref } from 'vue';
 
 export default defineComponent({
   name: 'AuthForm',
   setup() {
+    //eslint-disable-next-line
+    const $q = useQuasar();
     return {
       email: ref(''),
       password: ref(''),
@@ -77,17 +79,19 @@ export default defineComponent({
         .post(apiType, data)
         .then((res) => {
           if (res.data) {
-            Notify.create({
+            this.$q.notify({
               message: 'Success',
               color: 'green',
               textColor: 'white',
             });
-            !this.registerForm &&
-              LocalStorage.set('token', res.data.access_token);
+            if (!this.registerForm) {
+              this.$q.localStorage.set('token', res.data.access_token);
+              console.log(res.data.access_token);
+            }
           }
         })
         .catch((error: AxiosError) => {
-          Notify.create({
+          this.$q.notify({
             message: error.response?.data.message,
             color: 'red',
             textColor: 'white',
