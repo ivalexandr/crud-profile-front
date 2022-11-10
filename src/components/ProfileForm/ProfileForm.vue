@@ -86,6 +86,18 @@ export default defineComponent({
         address: this.address,
         phone: this.phone,
       };
+
+      api.interceptors.response.use((response) => {
+        const message = response.data.message;
+        if (message === 'Unauthorized') {
+          api.post(
+            'auth/login',
+            JSON.parse(this.$q.localStorage.getItem('user') as string)
+          );
+        }
+        return response;
+      });
+
       api
         .patch('profile/user', data, {
           headers: {
