@@ -57,6 +57,10 @@ export default defineComponent({
     };
   },
   mounted() {
+    if (!this.$q.localStorage.getItem('token')) {
+      this.$router.push('/');
+      return;
+    }
     api
       .get('profile/user', {
         headers: {
@@ -75,7 +79,6 @@ export default defineComponent({
   methods: {
     submitHandler(event: SubmitEvent | Event) {
       event.preventDefault();
-      console.log(this.phone);
       const data: TResponseData = {
         name: this.name,
         about: this.about,
