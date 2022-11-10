@@ -20,7 +20,7 @@
             <AuthForm button-text="sign up" />
           </q-tab-panel>
           <q-tab-panel name="login">
-            <AuthForm />
+            <AuthForm :register-form="false" />
           </q-tab-panel>
         </q-tab-panels>
       </q-card>
@@ -31,7 +31,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ref } from 'vue';
-import AuthForm from '../components/AuthForm.vue';
+import AuthForm from '../components/AuthForm/AuthForm.vue';
 
 export default defineComponent({
   name: 'IndexPage',
