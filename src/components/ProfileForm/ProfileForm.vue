@@ -44,6 +44,7 @@ import { defineComponent, ref } from 'vue';
 import { useQuasar } from 'quasar';
 import { TResponseData } from './types';
 import { api } from 'src/boot/axios';
+import { AxiosError } from 'axios';
 
 export default defineComponent({
   setup() {
@@ -91,7 +92,22 @@ export default defineComponent({
             Authorization: `Bearer ${this.$q.localStorage.getItem('token')}`,
           },
         })
-        .then((data) => console.log(data));
+        .then((res) => {
+          if (res.data) {
+            this.$q.notify({
+              message: 'Success',
+              color: 'green',
+              textColor: 'white',
+            });
+          }
+        })
+        .catch((error: AxiosError) => {
+          this.$q.notify({
+            message: error.response?.data.message,
+            color: 'red',
+            textColor: 'white',
+          });
+        });
     },
   },
 });
