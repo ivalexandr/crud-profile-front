@@ -1,41 +1,22 @@
-# Quasar App (crud-profile-front)
+## CRUD PROJECT FRONTEND
 
-A Quasar Project
+![app_screenshot](./assets/app.png)
 
-## Install the dependencies
-```bash
-yarn
-# or
-npm install
-```
+### What can it do:
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
+1. Sign up
+2. Sign in
+3. Edit profile page
+4. Save information
+5. Log out
 
+### Developed with the help of [Quasar Framework](https://quasar.dev/)
 
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
+### App deployed in [Render](https://crud-front.onrender.com/#/)
 
+To start it up:
 
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
-
-
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js).
+1. You need to clone repository to you
+2. To install all dependencies: `npm i`
+3. To start in dev mode: `npm run start`
+4. To build project: `npm run build`
